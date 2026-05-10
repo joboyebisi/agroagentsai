@@ -1,10 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ChevronLeft, MapPin, Camera, CheckCircle2, AlertTriangle, Loader2 } from "lucide-react";
 
-export default function ProofOfDelivery() {
+export default function ProofOfDeliveryPage() {
+  return <Suspense fallback={<div className="flex items-center justify-center min-h-screen"><Loader2 className="w-8 h-8 animate-spin text-amber-600" /></div>}><ProofOfDelivery /></Suspense>;
+}
+
+function ProofOfDelivery() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const orderId = searchParams.get('id') || 'ORD-9912';

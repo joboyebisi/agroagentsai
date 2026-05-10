@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { Truck, MapPin, Package, Camera, ShieldCheck, CheckCircle2, AlertTriangle, Wifi, Loader2, RefreshCw } from 'lucide-react';
@@ -11,7 +11,11 @@ type DeliveryState = 'IDLE' | 'AT_FARM' | 'VERIFYING' | 'SUCCESS' | 'FAILED';
 const FARM_LAT = 12.002;
 const FARM_LNG = 8.591;
 
-export default function DistributorApp() {
+export default function DistributorPage() {
+  return <Suspense fallback={<div className="flex items-center justify-center min-h-screen"><Loader2 className="w-8 h-8 animate-spin text-orange-600" /></div>}><DistributorApp /></Suspense>;
+}
+
+function DistributorApp() {
   const searchParams = useSearchParams();
   const tenantId = searchParams.get('tenantId') || localStorage.getItem('agro_tenant_id') || 'demo_tenant';
 

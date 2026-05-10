@@ -1,11 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ChevronLeft, Map, Camera, ScanFace, CheckCircle2, Loader2, AlertCircle, Wifi } from "lucide-react";
 
-export default function OnboardFarmer() {
+export default function OnboardFarmerPage() {
+  return <Suspense fallback={<div className="flex items-center justify-center min-h-screen"><Loader2 className="w-8 h-8 animate-spin text-blue-600" /></div>}><OnboardFarmer /></Suspense>;
+}
+
+function OnboardFarmer() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const tenantId = searchParams.get('tenantId') || 'demo_tenant';

@@ -1,11 +1,15 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { UserPlus, MapPin, CheckCircle2, ChevronRight, Leaf, Wifi, ShieldCheck, AlertTriangle } from "lucide-react";
+import { UserPlus, MapPin, CheckCircle2, ChevronRight, Leaf, Wifi, ShieldCheck, AlertTriangle, Loader2 } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 
-export default function FieldAgentDashboard() {
+export default function FieldAgentPage() {
+  return <Suspense fallback={<div className="flex items-center justify-center min-h-screen"><Loader2 className="w-8 h-8 animate-spin text-blue-600" /></div>}><FieldAgentDashboard /></Suspense>;
+}
+
+function FieldAgentDashboard() {
   const searchParams = useSearchParams();
   const tenantId = searchParams.get('tenantId') || localStorage.getItem('agro_tenant_id') || 'demo_tenant';
 
