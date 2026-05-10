@@ -222,7 +222,7 @@ agro-agents-ai/
 
 ## 👥 Team
 
-Built for the Nokia Network-as-Code Hackathon.
+Built for the GSMA Africa Ignite Nokia Network-as-Code Hackathon.
 
 **AgroAgents** — Bridging the trust gap in African smallholder agriculture with network-level verification.
 
